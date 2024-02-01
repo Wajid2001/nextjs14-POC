@@ -1,6 +1,15 @@
 import { cookies } from "next/headers";
+import { removeAllCookies } from "./actions";
 
-export default function Home() {
+function LogoutBtn() {
+  return (
+    <form action={removeAllCookies}>
+      <button className="underline hover:text-blue-500">logout</button>
+    </form>
+  );
+}
+
+export default async function Home() {
   const user = cookies().get("name")?.value || "";
   const userType = cookies().get("userType")?.value || "";
 
@@ -9,6 +18,7 @@ export default function Home() {
       <>
         <h1>Welcome {user}!</h1>
         <h2>Admin Page</h2>
+        <LogoutBtn />
       </>
     );
   }
@@ -16,6 +26,7 @@ export default function Home() {
   return (
     <>
       <h1>Welcome {user}!</h1>
+      <LogoutBtn />
     </>
   );
 }
