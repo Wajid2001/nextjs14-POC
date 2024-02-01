@@ -1,5 +1,6 @@
 "use server";
 
+import { ROUTES } from "@/utils/routes";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
@@ -14,5 +15,5 @@ export async function actionLoginUser(formData: FormData) {
   cookies().set("userType", "admin", { secure: true, httpOnly: true });
   cookies().set("token", "1234567890", { secure: true, httpOnly: true });
 
-  redirect("/");
+  redirect(ROUTES.HOME);
 }

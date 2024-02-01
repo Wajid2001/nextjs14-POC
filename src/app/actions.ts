@@ -1,3 +1,4 @@
+import { ROUTES } from "@/utils/routes";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
@@ -7,5 +8,5 @@ export const removeAllCookies = async () => {
   cookies().delete("userType");
   cookies().delete("token");
 
-  redirect("/login");
+  redirect(ROUTES.LOGIN);
 };
